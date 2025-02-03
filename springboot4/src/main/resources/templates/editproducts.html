@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <style>
+		
+		  body {
+		    background: linear-gradient(45deg, rgb(0, 0, 160), rgb(0, 0, 0));
+		    height: 750px;
+		    display: flex;
+		    justify-content: center;
+		    align-items: center;
+		    margin: 0;
+		    font-family: 'Poppins', sans-serif;
+		  }
+
+		  .container {
+		    background-color: #ffffff;
+		    border-radius: 15px;
+		    padding: 40px;
+		    width: 80%;
+		    max-width: 600px;
+		    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+		    transition: transform 0.3s ease, box-shadow 0.3s ease;
+		  }
+
+		  .container:hover {
+		    transform: scale(1.02);
+		    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+		  }
+
+		  h1 {
+		    text-align: center;
+		    margin-bottom: 30px;
+		    color: #2C3E50;
+		    font-size: 36px;
+		    font-weight: 700;
+		  }
+
+		  .form-group label {
+		    font-size: 18px;
+		    font-weight: 600;
+		    color: #34495E;
+		  }
+
+		  .form-control {
+		    padding: 12px;
+		    font-size: 16px;
+		    border-radius: 10px;
+		    border: 1px solid rgb(128, 128, 128);
+		    margin-bottom: 20px;
+		    transition: all 0.3s ease-in-out;
+		  }
+
+		  .form-control:focus {
+		    border-color: #2980b9;
+		    box-shadow: 0px 0px 8px rgba(41, 128, 185, 0.8);
+		  }
+
+		  .btn-primary {
+		    width: 100%;
+		    padding: 12px;
+		    font-size: 18px;
+		    font-weight: bold;
+		    border-radius: 10px;
+		    background-color: #2980b9;
+		    border: none;
+		    transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+		  }
+
+		  .btn-primary:hover {
+		    background-color: #1f6693;
+		    transform: translateY(-3px);
+		  }
+
+		  /* Back to Home Button */
+		  .home-link {
+		    position: absolute;
+		    bottom: 30px;
+		    left: 30px;
+		  }
+
+		  .home-link button {
+		    background-color: rgba(41, 128, 185, 0.8);
+		    color: white;
+		    font-size: 16px;
+		    padding: 10px 20px;
+		    border-radius: 8px;
+		    border: none;
+		    transition: background-color 0.3s ease, transform 0.2s ease-in-out;
+		  }
+
+		  .home-link button:hover {
+		    background-color: rgba(41, 128, 185, 1);
+		    transform: translateY(-3px);
+		    box-shadow: 0px 5px 15px rgba(41, 128, 185, 0.5);
+		  }
+	
+		
+
+    </style>
+
+    <title>Edit Product</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Edit Products</h1>
+
+      <form th:action="@{/save}" method="post" th:object="${bk}">
+        <input type="hidden" name="id" th:value="${bk.id}"/>
+
+        <div class="form-group">
+          <label for="author">Product Category</label>
+          <input type="text" class="form-control" placeholder="Enter category name" name="author" th:value="${bk.author}">
+        </div>
+
+        <div class="form-group">
+          <label for="bname">Product Name</label>
+          <input type="text" class="form-control" placeholder="Enter product name" name="bname" th:value="${bk.bname}">
+        </div>
+
+        <div class="form-group">
+          <label for="price">Product Price</label>
+          <input type="number" class="form-control" placeholder="Enter product price" name="price" th:value="${bk.price}">
+        </div>
+
+        <div class="form-group">
+          <label for="stock">Stocks Available</label>
+          <input type="number" class="form-control" id="stock" placeholder="Enter stock number" name="stock" th:value="${bk.stock}">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+	<!-- Back to Home Button -->
+			<div class="home-link">
+			  <a th:href="@{/}">
+			    <button>⬅ Back to Home</button>
+			  </a>
+			</div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </body>
+</html>
